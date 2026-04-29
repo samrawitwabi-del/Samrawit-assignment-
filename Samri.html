@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>web design assignment</title>
+
+<style>
+/* ===== GLOBAL ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+    position: fixed;
+    top:0;
+    width:100%;
+    background:#072c7b91;
+    padding:10px 0;
+    z-index:1000;
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+}
+
+nav ul li{
+    margin:0 20px;
+}
+
+nav ul li a{
+    color:#af112c91;
+    text-decoration:none;
+    font-size:20px;
+}
+
+/* ===== HOME ===== */
+#home{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:#3379f791;
+    text-align:center;
+}
+
+#home h1{
+    font-size:40px;
+}
+
+#home h2{
+    margin:18px 0;
+}
+
+.btn{
+    background:#2d18b491;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    cursor:pointer;
+}
+
+/* ===== ABOUT ===== */
+#about{
+    padding:60px;
+    background:#58d1e191;
+    text-align:center;
+}
+
+/* ===== SERVICES ===== */
+#services{
+    padding:40px;
+    background:#d3101091;
+}
+
+.service{
+    margin:35px 0;
+}
+
+/* ===== SKILLS ===== */
+#skills{
+    padding:60px;
+    background:#b9bbe091;
+    color:white;
+}
+
+.skill{
+    margin:10px 0;
+}
+
+.bar{
+    width:100%;
+    background:#00000091;
+}
+
+.bar div{
+    height:10px;
+    background:#e922c391;
+}
+
+/* ===== CONTACT ===== */
+#contact{
+    padding:60px;
+    background:#606a7c91;
+    color:#3de92291;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:25px;
+    background:black;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Service</a></li>
+        <li><a href="#skills">Skill</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+    <h1>Hello, I am Samrawit Wabi</h1>
+    <h2><span id="typing"></span></h2>
+    <button class="btn">Contact</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        I am a high school student .Usually I like sleeping and joke.My hobby is singing spiritual song.
+    </p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2>My Services</h2>
+
+    <div class="service">
+        <h3>beauty</h3>
+        <p>I work childs and womens hair to any program. </p>
+    </div>
+
+    <div class="service">
+        <h3>studing</h3>
+        <p>I give tutorials for my 2 little brothers.</p>
+    </div>
+
+    <div class="service">
+        <h3>working</h3>
+        <p>I work a tired work in my home.</p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skill">
+        HTML 65%
+        <div class="bar"><div style="width:90%"></div></div>
+    </div>
+
+    <div class="skill">
+        CSS 40%
+        <div class="bar"><div style="width:85%"></div></div>
+    </div>
+
+    <div class="skill">
+        JavaScript 20%
+        <div class="bar"><div style="width:65%"></div></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact Me</h2>
+
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <input type="text" placeholder="Subject">
+    <textarea placeholder="Message"></textarea>
+
+    <button class="btn">Send Message</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © Samrawit Wabi Website | All rights reserved
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+// typing effect
+const text = ["I am a grade 11 web design student"];
+let i = 0;
+let j = 0;
+let currentText = "";
+let isDeleting = false;
+function type(){
+    currentText = text[i];
+
+    if(!isDeleting){
+        document.getElementById("typing").innerHTML =
+            currentText.substring(0, j++);
+        if(j > currentText.length){
+            isDeleting = true;
+            setTimeout(type, 1000);
+            return;
+        }
+    }else{
+        document.getElementById("typing").innerHTML =
+            currentText.substring(0, j--);
+        if(j == 0){
+            isDeleting = false;
+            i = (i + 1) % text.length;
+        }
+    }
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+
+type();
+</script>
+
+</body>
+</html>
